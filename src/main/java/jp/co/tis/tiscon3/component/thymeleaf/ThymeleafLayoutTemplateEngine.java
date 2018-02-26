@@ -25,6 +25,9 @@ import java.util.function.Function;
  * @author y_honda_
  * @see enkan.component.thymeleaf.ThymeleafTemplateEngine
  */
+
+// commit test
+
 public class ThymeleafLayoutTemplateEngine extends TemplateEngine {
     private String prefix = "templates/";
     private String suffix = ".html";
