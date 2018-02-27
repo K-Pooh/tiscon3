@@ -7,6 +7,7 @@
     <title>新規作成</title>
 
     <script src="/assets/js/metrixir.client.js"></script>
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 </head>
 <body>
 <div class="full height image" layout:fragment="content">
@@ -26,7 +27,7 @@
 
                             <div class="ui horizontal divider">ご本人について</div>
 
-                            <div class="field" th:classappend="${form.hasErrors('kanjiName')} ? 'error'">
+                            <div class="field" th:classappend="${form.hasErrors('kanjifastName')} or ${form.hasErrors('kanjilastName')} ? 'error'">
                                 <label>お名前（漢字）<font color="#ff0000">※必須項目</font></label>
                                 <div class="two fields">
                                     <div class="field">
@@ -36,11 +37,12 @@
                                         <input type="text" name="kanjilastName" th:value="${form.kanjilastName}"/>
                                     </div>
                                 </div>
+                            </div>
+
                             <div class="field" th:classappend="${form.hasErrors('kanaName')} ? 'error'">
 
                                 <label>お名前（カナ）<font color="#ff0000">※</font></label>
                                 <input type="text" name="kanaName" th:value="${form.kanaName}"/>
-                            </div>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('alphabetName')} ? 'error'">
                                 <label>お名前（ローマ字）</label>
@@ -58,7 +60,7 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('zipCode')} ? 'error'">
                                 <label>郵便番号<font color="#ff0000">※</font></label>
-                                <input type="text" class="zipcode" name="zipCode" th:value="${form.zipCode}"/>
+                                <input type="text" class="zipcode" name="zipCode" th:value="${form.zipCode}" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');"/>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('address')} ? 'error'">
                                 <label>ご住所<font color="#ff0000">※</font></label>
@@ -87,7 +89,7 @@
                             <div class="field" th:classappend="${form.hasErrors('houseClassification')} ? 'error'">
                                 <label>お住まい<font color="#ff0000">※</font></label>
                                 <select class="ui dropdown" name="houseClassification">
-                                    <option value=""></option>
+                                    <option value="">---選択してください---</option>
                                     <option value="自己所有" th:selected="${form.houseClassification}=='自己所有'">本人名義の一戸建・マンション</option>
                                     <option value="家族所有" th:selected="${form.houseClassification}=='家族所有'">家族名義の一戸建・マンション</option>
                                     <option value="社宅" th:selected="${form.houseClassification}=='社宅'">社宅</option>
@@ -109,17 +111,20 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('job')} ? 'error'">
                                 <label>ご職業<font color="#ff0000">※</font></label>
-                                <input type="radio" name="job" value="経営自営" th:checked="${form.job}=='経営自営'"/>経営・自営業
-                                <input type="radio" name="job" value="会社員" th:checked="${form.job}=='会社員'"/>会社員
-                                <input type="radio" name="job" value="契約派遣" th:checked="${form.job}=='契約派遣'"/>契約・派遣社員
-                                <input type="radio" name="job" value="公務員" th:checked="${form.job}=='公務員'"/>公務員
-                                <input type="radio" name="job" value="民間団体" th:checked="${form.job}=='民間団体'"/>民間団体
-                                <input type="radio" name="job" value="主婦" th:checked="${form.job}=='主婦'"/>主婦
-                                <input type="radio" name="job" value="学生" th:checked="${form.job}=='学生'"/>学生
-                                <input type="radio" name="job" value="年金受給" th:checked="${form.job}=='年金受給'"/>年金受給者の方
-                                <input type="radio" name="job" value="パートアルバイト" th:checked="${form.job}=='パートアルバイト'"/>パート・アルバイト
-                                <input type="radio" name="job" value="他有職" th:checked="${form.job}=='他有職'"/>その他 (有職）
-                                <input type="radio" name="job" value="他無職" th:checked="${form.job}=='他無職'"/>その他（無職）
+                                <select class="ui dropdown" name="job">
+                                    <option value="">---選択してください---</option>
+                                    <option value="経営自営" th:selected="${form.job}=='経営自営'">経営・自営業</option>
+                                    <option value="会社員" th:selected="${form.job}=='会社員'">会社員</option>
+                                    <option value="契約派遣" th:selected="${form.job}=='契約派遣'">契約・派遣社員</option>
+                                    <option value="公務員" th:selected="${form.job}=='公務員'">公務員</option>
+                                    <option value="民間団体" th:selected="${form.job}=='民間団体'">民間団体</option>
+                                    <option value="主婦" th:selected="${form.job}=='主婦'">主婦</option>
+                                    <option value="学生" th:selected="${form.job}=='学生'">学生</option>
+                                    <option value="年金受給" th:selected="${form.job}=='年金受給'">年金受給者の方</option>
+                                    <option value="パートアルバイト" th:selected="${form.job}=='パートアルバイト'">パート・アルバイト</option>
+                                    <option value="他有職" th:selected="${form.job}=='他有職'">その他 (有職）</option>
+                                    <option value="他無職" th:selected="${form.job}=='他無職'">その他（無職）</option>
+                                </select>
                             </div>
 
                             <!--/*"お勤め先"の入力値を引き回すための隠し項目*/-->
