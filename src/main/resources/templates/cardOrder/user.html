@@ -79,7 +79,7 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('emailAddress')} ? 'error'">
                                 <label>メールアドレス<font color="#ff0000">※</font></label>
-                                <input type="text" name="emailAddress" th:value="${form.emailAddress}"/>
+                                <input type="email" name="emailAddress" th:value="${form.emailAddress}" required/>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('spouse')} ? 'error'">
                                 <label>配偶者有無<font color="#ff0000">※</font></label>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('houseClassification')} ? 'error'">
                                 <label>お住まい<font color="#ff0000">※</font></label>
-                                <select class="ui dropdown" name="houseClassification">
+                                <select class="ui dropdown" name="houseClassification" required>
                                     <option value="">---選択してください---</option>
                                     <option value="自己所有" th:selected="${form.houseClassification}=='自己所有'">本人名義の一戸建・マンション</option>
                                     <option value="家族所有" th:selected="${form.houseClassification}=='家族所有'">家族名義の一戸建・マンション</option>
@@ -103,15 +103,15 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('debt')} ? 'error'">
                                 <label>ローン等のお借り入れ金額<font color="#ff0000">※</font></label>
-                                <input type="text" class="number" name="debt" th:value="${form.debt}"/><span class="unit">万円</span>
+                                <input type="number" class="number" name="debt" th:value="${form.debt}" min="0" required/><span class="unit">万円</span>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('income')} ? 'error'">
                                 <label>昨年の所得<font color="#ff0000">※</font></label>
-                                <input type="text" class="number" name="income" th:value="${form.income}"/><span class="unit">万円</span>
+                                <input type="number" class="number" name="income" th:value="${form.income}" min="0" required/><span class="unit">万円</span>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('job')} ? 'error'">
                                 <label>ご職業<font color="#ff0000">※</font></label>
-                                <select class="ui dropdown" name="job">
+                                <select class="ui dropdown" name="job" required>
                                     <option value="">---選択してください---</option>
                                     <option value="経営自営" th:selected="${form.job}=='経営自営'">経営・自営業</option>
                                     <option value="会社員" th:selected="${form.job}=='会社員'">会社員</option>
