@@ -11,7 +11,10 @@ public class CardOrderForm extends FormBase {
 
     @NotBlank
     @Size(max = 60)
-    private String kanjiName;
+    private String kanjifastName;
+    private String kanjilastName;
+
+
 
     @NotBlank
     @Size(max = 90)
