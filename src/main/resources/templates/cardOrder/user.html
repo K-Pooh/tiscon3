@@ -17,7 +17,7 @@
                     <div class="ui segment metrixir">
                         <h1 class="ui aligned header teal">お申込み情報</h1>
 
-                        <form class="ui form" method="post" action="/cardOrder/user">
+                         <form class="ui form" method="post" action="/cardOrder/user">
 
                             <!-- /*エラーがあれば表示する*/ -->
                             <ul class="ui red basic label" th:if="${form.hasErrors()}">
@@ -36,7 +36,8 @@
                                         <input type="text" name="kanjilastName" th:value="${form.kanjilastName}"/>
                                     </div>
                                 </div>
-                            <div class="field" th:classappend="${form.hasErrors('kanaName')} ? 'error'">
+                            </div>
+                                <div class="field" th:classappend="${form.hasErrors('kanaName')} ? 'error'">
 
                                 <label>お名前（カナ）<font color="#ff0000">※</font></label>
                                 <div class="two fields">
@@ -46,11 +47,19 @@
                                     <div class="field">
                                         <input type="text" name="kanalastName" th:value="${form.kanalastName}"/>
                             </div>
-
+                                </div>
+                                </div>
                             <div class="field" th:classappend="${form.hasErrors('alphabetName')} ? 'error'">
                                 <label>お名前（ローマ字）</label>
                                 <font size="2">（全て大文字でご入力ください。）</font>
-                                <input type="text" name="alphabetName" th:value="${form.alphabetName}"/>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input type="text" name="alphabetfastName" th:value="${form.alphabetfastName}"/>
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" name="alphabetlastName" th:value="${form.alphabetlastName}"/>
+                                    </div>
+                                </div>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('gender')} ? 'error'">
                                 <label>性別<font color="#ff0000">※</font></label>
@@ -140,7 +149,7 @@
                             <input type="hidden" name="employeeLength" th:value="${form.employeeLength}"/>
 
                             <button class="ui fluid teal button">次へ（お勤め先情報の入力）</button>
-                        </form>
+                         </form>
                     </div>
                 </div>
             </div>
