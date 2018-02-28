@@ -74,7 +74,7 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('dateOfBirth')} ? 'error'">
                                 <label>生年月日<font color="#ff0000">※</font></label>
-                                <input type="text" name="dateOfBirth" th:value="${form.dateOfBirth}"/>
+                                <input placeholder="1900/9/6" type="text" name="dateOfBirth" th:value="${form.dateOfBirth}"/>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('zipCode1')} or ${form.hasErrors('zipCode2')} ? 'error'">
                                 <label>郵便番号<font color="#ff0000">※</font></label>
@@ -93,15 +93,38 @@
                                 <font size="2">（数字・ハイフンも半角でご入力ください。）</font>
                                 <input type="text" name="address" th:value="${form.address}"  required/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('homePhoneNumber')} ? 'error'">
+
+                            <div class="field" th:classappend="${form.hasErrors('homePhoneNumber1')} or ${form.hasErrors('homePhoneNumber2')} or${form.hasErrors('homePhoneNumber3')} ? 'error'">
                                 <label>自宅電話番号<font color="#ff0000">※</font></label>
                                 <font size="2">※自宅電話をお持ちでない方は入力不要です。必ず、下記携帯電話番号をご入力ください。</font>
-                                <input type="text" name="homePhoneNumber" th:value="${form.homePhoneNumber}"/>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input placeholder="xxx" type="text" name="homePhoneNumber1" th:value="${form.homePhoneNumber1}"/>
+                                    </div>
+                                    <div class="field">
+                                        <input placeholder="xxxx" type="text" name="homePhoneNumber2" th:value="${form.homePhoneNumber2}"/>
+                                    </div>
+                                    <div class="field">
+                                    <input placeholder="xxxx" type="text" name="homePhoneNumber3" th:value="${form.homePhoneNumber3}"/>
+                                </div>
+                                </div>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('mobilePhoneNumber')} ? 'error'">
+
+
+                            <div class="field" th:classappend="${form.hasErrors('mobilPhoneNumber1')} or ${form.hasErrors('mobilPhoneNumber2')} or${form.hasErrors('mobilPhoneNumber3')} ? 'error'">
                                 <label>携帯電話番号<font color="#ff0000">※</font></label>
                                 <font size="2">※携帯電話をお持ちでない方は入力不要です。必ず、上記自宅電話番号をご入力ください。</font>
-                                <input type="text" name="mobilePhoneNumber" th:value="${form.mobilePhoneNumber}"/>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input placeholder="xxx" type="text" name="mobilPhoneNumber1" th:value="${form.mobilPhoneNumber1}"/>
+                                    </div>
+                                    <div class="field">
+                                        <input placeholder="xxxx" type="text" name="mobilPhoneNumber2" th:value="${form.mobilPhoneNumber2}"/>
+                                    </div>
+                                    <div class="field">
+                                        <input placeholder="xxxx" type="text" name="mobilPhoneNumber3" th:value="${form.mobilPhoneNumber3}"/>
+                                    </div>
+                                </div>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('emailAddress')} ? 'error'">
                                 <label>メールアドレス<font color="#ff0000">※</font></label>
