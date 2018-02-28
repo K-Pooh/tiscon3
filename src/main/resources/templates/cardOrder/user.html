@@ -30,36 +30,38 @@
                             <div class="field" th:classappend="${form.hasErrors('kanjifastName')} or ${form.hasErrors('kanjilastName')} ? 'error'">
                                 <label>お名前（漢字）<font color="#ff0000">※必須項目</font></label>
                                 <div class="two fields">
+
                                     <div class="field">
-                                         <input placeholder="姓" type="text" name="kanjifastName" th:value="${form.kanjifastName}"/>
+                                         <input placeholder="姓" type="text" name="kanjifastName" th:value="${form.kanjifastName}" required/>
                                     </div>
                                      <div class="field">
-                                        <input placeholder="名"　type="text" name="kanjilastName" th:value="${form.kanjilastName}"/>
+                                        <input placeholder="名"　type="text" name="kanjilastName" th:value="${form.kanjilastName}" required/>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="field" th:classappend="${form.hasErrors('kanaName')} ? 'error'">
+                            <div class="field" th:classappend="${form.hasErrors('kanafastName')} or ${form.hasErrors('kanafastName')} ? 'error'">
 
                                 <label>お名前（カナ）<font color="#ff0000">※</font></label>
                                 <div class="two fields">
                                     <div class="field">
-                                        <input placeholder="セイ" type="text" name="kanafastName" th:value="${form.kanafastName}"/>
+                                        <input placeholder="セイ" type="text" name="kanafastName" th:value="${form.kanafastName}" required/>
                                     </div>
                                     <div class="field">
-                                        <input placeholder="メイ"　 type="text" name="kanalastName" th:value="${form.kanalastName}"/>
+                                        <input placeholder="メイ"　 type="text" name="kanalastName" th:value="${form.kanalastName}" required/>
                                     </div>
                                 </div>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('alphabetName')} ? 'error'">
+
+                            <div class="field" th:classappend="${form.hasErrors('alphabetfastName')} or ${form.hasErrors('alphabetlastName')} ? 'error'">
                                 <label>お名前（ローマ字）</label>
                                 <font size="2">（全て大文字でご入力ください。）</font>
                                 <div class="two fields">
                                     <div class="field">
-                                        <input placeholder="FastName" type="text" name="alphabetfastName" th:value="${form.alphabetfastName}"/>
+                                        <input placeholder="FastName" type="text" name="alphabetfastName" th:value="${form.alphabetfastName}" required/>
                                     </div>
                                     <div class="field">
-                                        <input placeholder="LastName" type="text" name="alphabetlastName" th:value="${form.alphabetlastName}"/>
+                                        <input placeholder="LastName" type="text" name="alphabetlastName" th:value="${form.alphabetlastName}" required/>
                                     </div>
                                 </div>
                             </div>
@@ -67,21 +69,29 @@
 
                             <div class="field" th:classappend="${form.hasErrors('gender')} ? 'error'">
                                 <label>性別<font color="#ff0000">※</font></label>
-                                <input type="radio" name="gender" value="male" th:checked="${form.gender}=='male'"/>男性
-                                <input type="radio" name="gender" value="female" th:checked="${form.gender}=='female'"/>女性
+                                <input type="radio" name="gender" value="male" th:checked="${form.gender}=='male'" required/>男性
+                                <input type="radio" name="gender" value="female" th:checked="${form.gender}=='female'" required/>女性
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('dateOfBirth')} ? 'error'">
                                 <label>生年月日<font color="#ff0000">※</font></label>
                                 <input type="text" name="dateOfBirth" th:value="${form.dateOfBirth}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('zipCode')} ? 'error'">
+                            <div class="field" th:classappend="${form.hasErrors('zipCode1')} or ${form.hasErrors('zipCode2')} ? 'error'">
                                 <label>郵便番号<font color="#ff0000">※</font></label>
-                                <input type="text" class="zipcode" name="zipCode" th:value="${form.zipCode}" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');"/>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input type="text" class="zipcode" size="10" name="zipCode1" th:value="${form.zipCode1}" required/>
+                                    </div>
+                                    <label style="vertical-align: middle">＿</label>
+                                    <div class="field">
+                                        <input type="text" class="zipcode" size="10" name="zipCode2" th:value="${form.zipCode2}" onKeyUp="AjaxZip3.zip2addr('zipCode1','zipCode2','address','address');" required/>
+                                    </div>
+                                </div>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('address')} ? 'error'">
                                 <label>ご住所<font color="#ff0000">※</font></label>
                                 <font size="2">（数字・ハイフンも半角でご入力ください。）</font>
-                                <input type="text" name="address" th:value="${form.address}"/>
+                                <input type="text" name="address" th:value="${form.address}"  required/>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('homePhoneNumber')} ? 'error'">
                                 <label>自宅電話番号<font color="#ff0000">※</font></label>
@@ -95,17 +105,17 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('emailAddress')} ? 'error'">
                                 <label>メールアドレス<font color="#ff0000">※</font></label>
-                                <input type="text" name="emailAddress" th:value="${form.emailAddress}"/>
+                                <input type="email" name="emailAddress" th:value="${form.emailAddress}" required/>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('spouse')} ? 'error'">
                                 <label>配偶者有無<font color="#ff0000">※</font></label>
-                                <input type="radio" name="spouse" value="1" th:checked="${form.spouse}=='1'"/>配偶者あり
-                                <input type="radio" name="spouse" value="0" th:checked="${form.spouse}=='0'"/>配偶者なし
+                                <input type="radio" name="spouse" value="1" th:checked="${form.spouse}=='1'" required/>配偶者あり
+                                <input type="radio" name="spouse" value="0" th:checked="${form.spouse}=='0'" required/>配偶者なし
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('houseClassification')} ? 'error'">
                                 <label>お住まい<font color="#ff0000">※</font></label>
                                 <select class="ui dropdown" name="houseClassification" required>
-                                    <option value=""></option>
+                                    <option value="">---選択してください---</option>
                                     <option value="自己所有" th:selected="${form.houseClassification}=='自己所有'">本人名義の一戸建・マンション</option>
                                     <option value="家族所有" th:selected="${form.houseClassification}=='家族所有'">家族名義の一戸建・マンション</option>
                                     <option value="社宅" th:selected="${form.houseClassification}=='社宅'">社宅</option>
@@ -119,11 +129,11 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('debt')} ? 'error'">
                                 <label>ローン等のお借り入れ金額<font color="#ff0000">※</font></label>
-                                <input type="text" class="number" name="debt" th:value="${form.debt}"/><span class="unit">万円</span>
+                                <input type="number" class="number" name="debt" th:value="${form.debt}" required/><span class="unit">万円</span>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('income')} ? 'error'">
                                 <label>昨年の所得<font color="#ff0000">※</font></label>
-                                <input type="text" class="number" name="income" th:value="${form.income}"/><span class="unit">万円</span>
+                                <input type="number" class="number" name="income" th:value="${form.income}" required/><span class="unit">万円</span>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('job')} ? 'error'">
                                 <label>ご職業<font color="#ff0000">※</font></label>

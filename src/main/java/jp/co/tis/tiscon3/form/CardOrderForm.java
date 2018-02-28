@@ -17,18 +17,23 @@ public class CardOrderForm extends FormBase {
     @Size(max = 60)
     private String kanjilastName;
 
-
-
     @NotBlank
     @Size(max = 90)
     @Pattern(regexp = "^[ァ-ヶー 　]*$")
     private String kanafastName;
+
+    @NotBlank
+    @Size(max = 90)
+    @Pattern(regexp = "^[ァ-ヶー 　]*$")
     private String kanalastName;
 
     @NotBlank
     @Size(max = 120)
     @Pattern(regexp = "^[a-zA-Z 　]*$")
     private String alphabetfastName;
+    @NotBlank
+    @Size(max = 120)
+    @Pattern(regexp = "^[a-zA-Z 　]*$")
     private String alphabetlastName;
 
     @NotBlank
@@ -41,9 +46,14 @@ public class CardOrderForm extends FormBase {
     private String gender;
 
     @NotBlank
-    @Size(max = 8)
-    @Pattern(regexp = "^[0-9]{3}-[0-9]{4}$")
-    private String zipCode;
+    @Size(max = 3)
+    @Pattern(regexp = "^[0-9]{3}$")
+    private String zipCode1;
+
+    @NotBlank
+    @Size(max = 4)
+    @Pattern(regexp = "^[0-9]{4}$")
+    private String zipCode2;
 
     @NotBlank
     @Size(max = 255)
