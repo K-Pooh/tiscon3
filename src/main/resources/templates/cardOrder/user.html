@@ -45,10 +45,10 @@
                                 <label>お名前（カナ）<font color="#ff0000">※</font></label>
                                 <div class="two fields">
                                     <div class="field">
-                                        <input placeholder="セイ" type="text" name="kanafastName" th:value="${form.kanafastName}" required/>
+                                        <input placeholder="セイ" type="text" name="kanafastName" th:value="${form.kanafastName}" required pattern="^[ァ-ヶー 　]*$"/>
                                     </div>
                                     <div class="field">
-                                        <input placeholder="メイ"　 type="text" name="kanalastName" th:value="${form.kanalastName}" required/>
+                                        <input placeholder="メイ"　 type="text" name="kanalastName" th:value="${form.kanalastName}" required pattern="^[ァ-ヶー 　]*$"/>
                                     </div>
                                 </div>
                             </div>
@@ -57,10 +57,10 @@
                                 <label>お名前（ローマ字）<font color="#ff0000">※</font></label>
                                 <div class="two fields">
                                     <div class="field">
-                                        <input placeholder="FastName" type="text" name="alphabetfastName" th:value="${form.alphabetfastName}" required/>
+                                        <input placeholder="FastName" type="text" name="alphabetfastName" th:value="${form.alphabetfastName}" required pattern="^[a-zA-Z 　]*$"/>
                                     </div>
                                     <div class="field">
-                                        <input placeholder="LastName" type="text" name="alphabetlastName" th:value="${form.alphabetlastName}" required/>
+                                        <input placeholder="LastName" type="text" name="alphabetlastName" th:value="${form.alphabetlastName}" required pattern="^[a-zA-Z 　]*$"/>
                                     </div>
                                 </div>
                             </div>
@@ -73,17 +73,17 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('dateOfBirth')} ? 'error'">
                                 <label>生年月日<font color="#ff0000">※</font></label>
-                                <input placeholder="1900/9/6" type="text" name="dateOfBirth" th:value="${form.dateOfBirth}"/>
+                                <input placeholder="1900/9/6" type="text" name="dateOfBirth" th:value="${form.dateOfBirth}" required pattern="\d{4}/\d{1,2}/\d{1,2}$"/>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('zipCode1')} or ${form.hasErrors('zipCode2')} ? 'error'">
                                 <label>郵便番号<font color="#ff0000">※</font></label>
                                 <div class="two fields">
                                     <div class="field">
-                                        <input type="text" class="zipcode" size="10" name="zipCode1" th:value="${form.zipCode1}" required/>
+                                        <input type="text" class="zipcode" size="10" name="zipCode1" th:value="${form.zipCode1}" required pattern="^[0-9]{3}$"/>
                                     </div>
                                     <label>＿</label>
                                     <div class="field">
-                                        <input type="text" class="zipcode" size="10" name="zipCode2" th:value="${form.zipCode2}" onKeyUp="AjaxZip3.zip2addr('zipCode1','zipCode2','address','address');" required/>
+                                        <input type="text" class="zipcode" size="10" name="zipCode2" th:value="${form.zipCode2}" required pattern="^[0-9]{4}$" onKeyUp="AjaxZip3.zip2addr('zipCode1','zipCode2','address','address');"/>
                                     </div>
                                 </div>
                             </div>
@@ -98,15 +98,15 @@
                                 <font size="2">※自宅電話をお持ちでない方は入力不要です。必ず、下記携帯電話番号をご入力ください。</font>
                                 <div class="two fields">
                                     <div class="field">
-                                        <input placeholder="xxx" type="text" name="homePhoneNumber1" th:value="${form.homePhoneNumber1}"/>
+                                        <input placeholder="xxx" type="text" name="homePhoneNumber1" th:value="${form.homePhoneNumber1}" pattern="^0[0-9]{1,3}$"/>
                                     </div>
                                     <label>＿</label>
                                     <div class="field">
-                                        <input placeholder="xxxx" type="text" name="homePhoneNumber2" th:value="${form.homePhoneNumber2}"/>
+                                        <input placeholder="xxxx" type="text" name="homePhoneNumber2" th:value="${form.homePhoneNumber2}" pattern="^[0-9]{2,4}$"/>
                                     </div>
                                     <label>＿</label>
                                     <div class="field">
-                                    <input placeholder="xxxx" type="text" name="homePhoneNumber3" th:value="${form.homePhoneNumber3}"/>
+                                    <input placeholder="xxxx" type="text" name="homePhoneNumber3" th:value="${form.homePhoneNumber3}" pattern="^[0-9]{4}$"/>
                                 </div>
                                 </div>
                             </div>
@@ -117,15 +117,15 @@
                                 <font size="2">※携帯電話をお持ちでない方は入力不要です。必ず、上記自宅電話番号をご入力ください。</font>
                                 <div class="two fields">
                                     <div class="field">
-                                        <input placeholder="xxx" type="text" name="mobilPhoneNumber1" th:value="${form.mobilPhoneNumber1}"/>
+                                        <input placeholder="xxx" type="text" name="mobilPhoneNumber1" th:value="${form.mobilPhoneNumber1}" pattern="^((070|080|090))?$"/>
                                     </div>
                                     <label>＿</label>
                                     <div class="field">
-                                        <input placeholder="xxxx" type="text" name="mobilPhoneNumber2" th:value="${form.mobilPhoneNumber2}"/>
+                                        <input placeholder="xxxx" type="text" name="mobilPhoneNumber2" th:value="${form.mobilPhoneNumber2}" pattern="^([0-9]{4})?$"/>
                                     </div>
                                     <label>＿</label>
                                     <div class="field">
-                                        <input placeholder="xxxx" type="text" name="mobilPhoneNumber3" th:value="${form.mobilPhoneNumber3}"/>
+                                        <input placeholder="xxxx" type="text" name="mobilPhoneNumber3" th:value="${form.mobilPhoneNumber3}" pattern="^([0-9]{4})?$"/>
                                     </div>
                                 </div>
                             </div>
@@ -181,9 +181,12 @@
 
                             <!--/*"お勤め先"の入力値を引き回すための隠し項目*/-->
                             <input type="hidden" name="employerName" th:value="${form.employerName}"/>
-                            <input type="hidden" name="employerZipCode" th:value="${form.employerZipCode}"/>
+                            <input type="hidden" name="employerZipCode1" th:value="${form.employerZipCode1}"/>
+                            <input type="hidden" name="employerZipCode2" th:value="${form.employerZipCode2}"/>
                             <input type="hidden" name="employerAddress" th:value="${form.employerAddress}"/>
-                            <input type="hidden" name="employerPhoneNumber" th:value="${form.employerPhoneNumber}"/>
+                            <input type="hidden" name="employerPhoneNumber1" th:value="${form.employerPhoneNumber1}"/>
+                            <input type="hidden" name="employerPhoneNumber2" th:value="${form.employerPhoneNumber2}"/>
+                            <input type="hidden" name="employerPhoneNumber3" th:value="${form.employerPhoneNumber3}"/>
                             <input type="hidden" name="industryType" th:value="${form.industryType}"/>
                             <input type="hidden" name="capital" th:value="${form.capital}"/>
                             <input type="hidden" name="companySize" th:value="${form.companySize}"/>
