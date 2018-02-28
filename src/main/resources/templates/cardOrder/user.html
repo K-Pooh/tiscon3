@@ -31,10 +31,10 @@
                                 <label>お名前（漢字）<font color="#ff0000">※必須項目</font></label>
                                 <div class="two fields">
                                     <div class="field">
-                                         <input type="text" name="kanjifastName" th:value="${form.kanjifastName}"/>
+                                         <input placeholder="姓" type="text" name="kanjifastName" th:value="${form.kanjifastName}"/>
                                     </div>
                                      <div class="field">
-                                        <input type="text" name="kanjilastName" th:value="${form.kanjilastName}"/>
+                                        <input placeholder="名"　type="text" name="kanjilastName" th:value="${form.kanjilastName}"/>
                                     </div>
                                 </div>
                             </div>
@@ -42,13 +42,29 @@
                             <div class="field" th:classappend="${form.hasErrors('kanaName')} ? 'error'">
 
                                 <label>お名前（カナ）<font color="#ff0000">※</font></label>
-                                <input type="text" name="kanaName" th:value="${form.kanaName}"/>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input placeholder="セイ" type="text" name="kanafastName" th:value="${form.kanafastName}"/>
+                                    </div>
+                                    <div class="field">
+                                        <input placeholder="メイ"　 type="text" name="kanalastName" th:value="${form.kanalastName}"/>
+                                    </div>
+                                </div>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('alphabetName')} ? 'error'">
                                 <label>お名前（ローマ字）</label>
                                 <font size="2">（全て大文字でご入力ください。）</font>
-                                <input type="text" name="alphabetName" th:value="${form.alphabetName}"/>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input placeholder="FastName" type="text" name="alphabetfastName" th:value="${form.alphabetfastName}"/>
+                                    </div>
+                                    <div class="field">
+                                        <input placeholder="LastName" type="text" name="alphabetlastName" th:value="${form.alphabetlastName}"/>
+                                    </div>
+                                </div>
                             </div>
+
+
                             <div class="field" th:classappend="${form.hasErrors('gender')} ? 'error'">
                                 <label>性別<font color="#ff0000">※</font></label>
                                 <input type="radio" name="gender" value="male" th:checked="${form.gender}=='male'"/>男性
