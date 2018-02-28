@@ -54,8 +54,7 @@
                             </div>
 
                             <div class="field" th:classappend="${form.hasErrors('alphabetfastName')} or ${form.hasErrors('alphabetlastName')} ? 'error'">
-                                <label>お名前（ローマ字）</label>
-                                <font size="2">（全て大文字でご入力ください。）</font>
+                                <label>お名前（ローマ字）<font color="#ff0000">※</font></label>
                                 <div class="two fields">
                                     <div class="field">
                                         <input placeholder="FastName" type="text" name="alphabetfastName" th:value="${form.alphabetfastName}" required/>
@@ -82,7 +81,7 @@
                                     <div class="field">
                                         <input type="text" class="zipcode" size="10" name="zipCode1" th:value="${form.zipCode1}" required/>
                                     </div>
-                                    <label style="vertical-align: middle">＿</label>
+                                    <label>＿</label>
                                     <div class="field">
                                         <input type="text" class="zipcode" size="10" name="zipCode2" th:value="${form.zipCode2}" onKeyUp="AjaxZip3.zip2addr('zipCode1','zipCode2','address','address');" required/>
                                     </div>
@@ -101,9 +100,11 @@
                                     <div class="field">
                                         <input placeholder="xxx" type="text" name="homePhoneNumber1" th:value="${form.homePhoneNumber1}"/>
                                     </div>
+                                    <label>＿</label>
                                     <div class="field">
                                         <input placeholder="xxxx" type="text" name="homePhoneNumber2" th:value="${form.homePhoneNumber2}"/>
                                     </div>
+                                    <label>＿</label>
                                     <div class="field">
                                     <input placeholder="xxxx" type="text" name="homePhoneNumber3" th:value="${form.homePhoneNumber3}"/>
                                 </div>
@@ -118,9 +119,11 @@
                                     <div class="field">
                                         <input placeholder="xxx" type="text" name="mobilPhoneNumber1" th:value="${form.mobilPhoneNumber1}"/>
                                     </div>
+                                    <label>＿</label>
                                     <div class="field">
                                         <input placeholder="xxxx" type="text" name="mobilPhoneNumber2" th:value="${form.mobilPhoneNumber2}"/>
                                     </div>
+                                    <label>＿</label>
                                     <div class="field">
                                         <input placeholder="xxxx" type="text" name="mobilPhoneNumber3" th:value="${form.mobilPhoneNumber3}"/>
                                     </div>
@@ -152,11 +155,11 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('debt')} ? 'error'">
                                 <label>ローン等のお借り入れ金額<font color="#ff0000">※</font></label>
-                                <input type="number" class="number" name="debt" th:value="${form.debt}" required/><span class="unit">万円</span>
+                                <input type="number" class="number" name="debt" min="0" th:value="${form.debt}" required/><span class="unit">万円</span>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('income')} ? 'error'">
                                 <label>昨年の所得<font color="#ff0000">※</font></label>
-                                <input type="number" class="number" name="income" th:value="${form.income}" required/><span class="unit">万円</span>
+                                <input type="number" class="number" name="income" min="0" th:value="${form.income}" required/><span class="unit">万円</span>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('job')} ? 'error'">
                                 <label>ご職業<font color="#ff0000">※</font></label>
