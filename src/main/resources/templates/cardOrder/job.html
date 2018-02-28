@@ -51,9 +51,19 @@
                                 <font size="2">（数字・ハイフンも半角でご入力ください。）</font>
                                 <input type="text" name="employerAddress" th:value="${form.employerAddress}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('employerPhoneNumber')} ? 'error'">
+                            <div class="field" th:classappend="${form.hasErrors('employerPhoneNumber1')} or ${form.hasErrors('employerPhoneNumber2')} or ${form.hasErrors('employerPhoneNumber3')}  ? 'error'">
                                 <label>お勤め先電話番号<font color="#ff0000">※</font></label>
-                                <input type="text" name="employerPhoneNumber" th:value="${form.employerPhoneNumber}"/>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input placeholder="xxx" type="text" name="employerPhoneNumber1" th:value="${form.employerPhoneNumber1}" required/>
+                                    </div>
+                                    <div class="field">
+                                        <input placeholder="xxxx" type="text" name="employerPhoneNumber2" th:value="${form.employerPhoneNumber2}" required/>
+                                    </div>
+                                        <div class="field">
+                                            <input placeholder="xxxx" type="text" name="employerPhoneNumber3" th:value="${form.employerPhoneNumber3}" required/>
+                                    </div>
+                                </div>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('industryType')} ? 'error'">
                                 <label>業種</label>

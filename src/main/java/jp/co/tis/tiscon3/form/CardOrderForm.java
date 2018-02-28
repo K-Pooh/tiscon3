@@ -131,8 +131,16 @@ public class CardOrderForm extends FormBase {
     private String employerAddress;
 
     @Size(max = 13)
-    @Pattern(regexp = "^(0[0-9]{1,3}-[0-9]{2,4}-[0-9]{4})?$")
-    private String employerPhoneNumber;
+    @Pattern(regexp = "^(0[0-9]{1,3})?$")
+    private String employerPhoneNumber1;
+
+    @Size(max = 13)
+    @Pattern(regexp = "^([0-9]{2,4})?$")
+    private String employerPhoneNumber2;
+
+    @Size(max = 13)
+    @Pattern(regexp = "^([0-9]{4})?$")
+    private String employerPhoneNumber3;
 
     @Size(max = 255)
     private String industryType;
