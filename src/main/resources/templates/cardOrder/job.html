@@ -126,6 +126,7 @@
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('employeeLength')} ? 'error'">
                                 <label>勤続年数</label>
+                                <font size="2">※半角でご入力ください。</font><br>
                                 <input type="number" class="number" name="employeeLength" th:value="${form.employeeLength}" /><span class="unit">年</span >
                             </div>
 
