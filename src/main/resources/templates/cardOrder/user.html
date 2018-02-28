@@ -16,7 +16,7 @@
             <div class="ui middle center aligned grid">
                 <div class="center column">
                     <div class="ui segment metrixir">
-                        <h1 class="ui aligned header teal">お申込み情報</h1>
+                        <h1 class="ui aligned header teal"><font color="#FF3366">お申込み情報</font></h1>
 
                         <form class="ui form" method="post" action="/cardOrder/user">
 
@@ -36,6 +36,12 @@
                                     </div>
                                      <div class="field">
                                         <input placeholder="名"　type="text" name="kanjilastName" th:value="${form.kanjilastName}" required/>
+                                        <span class="unit">姓</span>
+                                         <input type="text" name="kanjifastName" th:value="${form.kanjifastName}"/>
+                                    </div>
+                                     <div class="field">
+                                         <span class="unit">名</span>
+                                        <input type="text" name="kanjilastName" th:value="${form.kanjilastName}"/>
                                     </div>
                                 </div>
                             </div>
@@ -191,7 +197,7 @@
                             <input type="hidden" name="position" th:value="${form.position}"/>
                             <input type="hidden" name="employeeLength" th:value="${form.employeeLength}"/>
 
-                            <button class="ui fluid teal button">次へ（お勤め先情報の入力）</button>
+                            <button class="ui fluid red button">次へ（お勤め先情報の入力） </button>
                         </form>
                     </div>
                 </div>
