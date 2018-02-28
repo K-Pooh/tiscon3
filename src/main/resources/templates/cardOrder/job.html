@@ -7,6 +7,7 @@
     <title>お勤め先の入力</title>
 
     <script src="/assets/js/metrixir.client.js"></script>
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 </head>
 <body>
 <div class="full height image" layout:fragment="content">
@@ -30,11 +31,20 @@
 
                             <div class="field" th:classappend="${form.hasErrors('employerName')} ? 'error'">
                                 <label>お勤め先名<font color="#ff0000">※</font></label>
-                                <input type="text" name="employerName" th:value="${form.employerName}" required/>
+                                <input type="text" name="employerName" th:value="${form.employerName}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('employerZipCode')} ? 'error'">
+
+                            <div class="field" th:classappend="${form.hasErrors('employerZipCode1')} or ${form.hasErrors('employerZipCode2')} ? 'error'">
                                 <label>お勤め先郵便番号<font color="#ff0000">※</font></label>
-                                <input type="text" name="employerZipCode" th:value="${form.employerZipCode}"/>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input type="text" class="zipcode" size="10" name="employerZipCode1" th:value="${form.employerZipCode1}" pattern="^[0-9]{3}$"/>
+                                    </div>
+                                    <label>＿</label>
+                                    <div class="field">
+                                        <input type="text" class="zipcode" size="10" name="employerZipCode2" th:value="${form.employerZipCode2}" pattern="^[0-9]{4}$" onKeyUp="AjaxZip3.zip2addr('employerZipCode1','employerZipCode2','employerAddress','employerAddress');"/>
+                                    </div>
+                                </div>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('employerAddress')} ? 'error'">
                                 <label>お勤め先住所<font color="#ff0000">※</font></label>

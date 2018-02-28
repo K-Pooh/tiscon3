@@ -120,8 +120,12 @@ public class CardOrderForm extends FormBase {
     private String employerName;
 
     @Size(max = 8)
-    @Pattern(regexp = "^([0-9]{3}-[0-9]{4})?$")
-    private String employerZipCode;
+    @Pattern(regexp = "^([0-9]{3})?$")
+    private String employerZipCode1;
+
+    @Size(max = 8)
+    @Pattern(regexp = "^([0-9]{4})?$")
+    private String employerZipCode2;
 
     @Size(max = 255)
     private String employerAddress;
